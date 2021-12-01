@@ -1,9 +1,12 @@
 package com.aligkts.noteapp.ui.home
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.aligkts.noteapp.data.repository.notes.NoteRepository
+import com.aligkts.noteapp.domain.model.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -12,7 +15,20 @@ import javax.inject.Inject
 @OptIn(FlowPreview::class)
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    repository: NoteRepository,
+    private val repository: NoteRepository,
 ) : ViewModel() {
 
+    val notes = repository.getAllNotes()
+
+    fun insertNote(note: Note) = viewModelScope.launch {
+        repository.insert(note)
+    }
+
+    fun deleteNote(noteId: Long) = viewModelScope.launch {
+        repository.deleteNote(noteId)
+    }
+
+    fun updateNote(note: Note) = viewModelScope.launch {
+        repository.updateNote(note)
+    }
 }
