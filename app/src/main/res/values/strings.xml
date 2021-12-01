@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="title_home">Home</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="general_network_error">Cannot connect to server</string>
+    <string name="unknown_error">Unknown error happened</string>
+    <string name="loading">Loading …</string>
+</resources>
