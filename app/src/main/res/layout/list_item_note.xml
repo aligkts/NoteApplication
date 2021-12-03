@@ -13,10 +13,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/container_note"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_note_item"
         android:layout_marginVertical="@dimen/spacing_line"
         android:animateLayoutChanges="true"
-        app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/spacing_medium">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,10 +24,11 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_cover"
-                android:layout_width="92dp"
+                android:layout_width="@dimen/note_image_width"
                 android:layout_height="0dp"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_place_holder_24dp"
+                app:imageUrl="@{model.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="0.6666666"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,25 +38,34 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_title"
+                style="@style/NoteAppTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="@dimen/spacing_medium"
+                android:padding="@dimen/spacing_medium"
                 android:text="@{model.title}"
                 android:textSize="@dimen/text_small"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/img_edited"
                 app:layout_constraintStart_toEndOf="@id/img_cover"
                 app:layout_constraintTop_toTopOf="@id/img_cover"
                 tools:text="Title" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_edited"
+                visibleIf="@{model.edited}"
+                android:layout_width="@dimen/size_edit_icon"
+                android:layout_height="@dimen/size_edit_icon"
+                android:layout_margin="@dimen/spacing_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_date"
+                style="@style/NoteAppTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:paddingHorizontal="@dimen/spacing_medium"
                 android:paddingBottom="@dimen/spacing_medium"
                 android:text="@{model.createdDate}"
@@ -68,8 +77,11 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_detail"
+                style="@style/NoteAppTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:paddingHorizontal="@dimen/spacing_medium"
                 android:paddingBottom="@dimen/spacing_medium"
                 android:text="@{model.detail}"

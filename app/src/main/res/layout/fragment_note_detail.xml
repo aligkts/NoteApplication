@@ -31,7 +31,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.note.title}" />
+                    android:text="@={viewModel.title}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +45,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.note.detail}" />
+                    android:text="@={viewModel.detail}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,13 +59,13 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.note.imageUrl}" />
+                    android:text="@={viewModel.imageUrl}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/NoteAppTextInputLayoutDefaultStyle"
-                visibleIf="@{viewModel.note.isEditing()}"
+                visibleIf="@{viewModel.note != null}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_small"
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xlarge"
-                android:text="@{viewModel.note.isEditing() ? @string/edit_note : @string/add_note}"
+                android:text="@{viewModel.note != null ? @string/edit_note : @string/add_note}"
                 tools:text="@string/add_note" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

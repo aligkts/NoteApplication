@@ -9,4 +9,5 @@
     <color name="gray">#ccc</color>
     <color name="background_gray">#121212</color>
     <color name="light_background_gray">#292929</color>
+    <color name="faded_red">#d33f49</color>
 </resources>

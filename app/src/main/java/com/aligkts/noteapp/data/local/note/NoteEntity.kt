@@ -15,8 +15,8 @@ data class NoteEntity(
     @field:SerializedName("title") val title: String,
     @field:SerializedName("detail") val detail: String,
     @field:SerializedName("created_date") val createdDate: String?,
-    @field:SerializedName("edited_date") val editedDate: String?,
-    @field:SerializedName("image_url") val imageUrl: String?
+    @field:SerializedName("image_url") val imageUrl: String?,
+    @field:SerializedName("edited") val edited: Boolean,
 ) {
 
     fun toNote() = Note(
@@ -24,7 +24,7 @@ data class NoteEntity(
         title = title,
         detail = detail,
         createdDate = createdDate,
-        editedDate = editedDate,
         imageUrl = imageUrl,
+        edited = edited
     )
 }
