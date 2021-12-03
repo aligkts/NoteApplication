@@ -1,9 +1,6 @@
 package com.aligkts.noteapp.data.local.note
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.aligkts.noteapp.data.repository.notes.NotesLocalDataSource
 import kotlinx.coroutines.flow.Flow
 
@@ -14,8 +11,17 @@ import kotlinx.coroutines.flow.Flow
 interface NoteDao : NotesLocalDataSource {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    override suspend fun insert(notes: NoteEntity)
+    override suspend fun insert(note: NoteEntity)
 
-    @Query("SELECT * FROM notes WHERE id=:id")
-    override fun getNoteFlow(id: Long): Flow<NoteEntity?>
+    @Query("DELETE FROM notes WHERE id=:noteId")
+    override suspend fun delete(noteId: Long)
+
+    @Update
+    override suspend fun update(note: NoteEntity)
+
+    @Query("SELECT * FROM notes WHERE id=:noteId")
+    override fun getNote(noteId: Long): Flow<NoteEntity?>
+
+    @Query("SELECT * FROM notes")
+    override fun getAllNotes(): Flow<List<NoteEntity?>>
 }

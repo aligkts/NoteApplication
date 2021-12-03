@@ -1,13 +1,21 @@
 package com.aligkts.noteapp.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.aligkts.noteapp.R
 import com.aligkts.noteapp.databinding.FragmentHomeBinding
+import com.aligkts.noteapp.domain.model.Note
 import com.aligkts.noteapp.ui.common.base.BaseFragment
+import com.aligkts.noteapp.utils.gone
+import com.aligkts.noteapp.utils.navigateSafe
+import com.aligkts.noteapp.utils.show
+import com.aligkts.noteapp.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
  * Created by Ali Göktaş on 01,December,2021
@@ -16,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val homeViewModel: HomeViewModel by viewModels()
+    private val noteAdapter by lazy { NoteAdapter(::onNoteClicked) }
 
     override fun inflateBinding(
         inflater: LayoutInflater,
@@ -24,5 +33,49 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupBindings()
+        observeNotes()
+        setHasOptionsMenu(true)
+    }
+
+    private fun setupBindings() = with(binding) {
+        viewModel = homeViewModel
+        rvNotes.adapter = noteAdapter
+    }
+
+    private fun observeNotes() = viewLifecycleOwner.lifecycleScope.launch {
+        homeViewModel.notes.collectLatest {
+            noteAdapter.submitList(it)
+            if (it.isNullOrEmpty()) {
+                binding.txtEmptyNote.show()
+                binding.rvNotes.gone()
+            } else {
+                binding.txtEmptyNote.gone()
+                binding.rvNotes.show()
+            }
+        }
+    }
+
+    private fun onNoteClicked(clickedNote: Note) {
+        findNavController().navigateSafe(
+            HomeFragmentDirections.actionNavigationHomeToNavigationNoteDetail(
+                note = clickedNote
+            )
+        )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_add_note -> {
+                findNavController().navigateSafe(HomeFragmentDirections.actionNavigationHomeToNavigationNoteDetail())
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

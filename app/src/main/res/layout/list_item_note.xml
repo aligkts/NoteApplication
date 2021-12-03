@@ -1,72 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
-    app:cardBackgroundColor="@color/light_background_gray"
-    app:cardCornerRadius="@dimen/spacing_medium"
-    android:layout_marginVertical="@dimen/spacing_line">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="model"
+            type="com.aligkts.noteapp.domain.model.Note" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container_note"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_line"
+        android:animateLayoutChanges="true"
+        app:cardBackgroundColor="@color/gray"
+        app:cardCornerRadius="@dimen/spacing_medium">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_cover"
-            android:layout_width="92dp"
-            android:layout_height="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_place_holder_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="0.6666666"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/orange_700" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_cover"
+                android:layout_width="92dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_place_holder_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="0.6666666"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/orange_700" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:paddingVertical="@dimen/spacing_medium"
-            android:paddingHorizontal="@dimen/spacing_medium"
-            android:textSize="@dimen/text_small"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_cover"
-            app:layout_constraintTop_toTopOf="@id/img_cover"
-            tools:text="Sponge Bob" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:paddingHorizontal="@dimen/spacing_medium"
+                android:paddingVertical="@dimen/spacing_medium"
+                android:text="@{model.title}"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_cover"
+                app:layout_constraintTop_toTopOf="@id/img_cover"
+                tools:text="Title" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/spacing_medium"
-            android:paddingBottom="@dimen/spacing_medium"
-            android:textSize="@dimen/text_xsmall"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_cover"
-            app:layout_constraintTop_toBottomOf="@id/txt_title"
-            tools:text="2019" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_medium"
+                android:text="@{model.createdDate}"
+                android:textSize="@dimen/text_xsmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_cover"
+                app:layout_constraintTop_toBottomOf="@id/txt_title"
+                tools:text="2019" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_overview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="2"
-            android:paddingHorizontal="@dimen/spacing_medium"
-            android:paddingBottom="@dimen/spacing_medium"
-            android:textSize="@dimen/text_xsmall"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_cover"
-            app:layout_constraintTop_toBottomOf="@id/txt_date"
-            tools:text="Caught in the cross hairs of police corruption and Marseille’s warring gangs, a loyal cop must protect his squad by taking matters into his own hands." />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_medium"
+                android:text="@{model.detail}"
+                android:textSize="@dimen/text_xsmall"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_cover"
+                app:layout_constraintTop_toBottomOf="@id/txt_date"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
