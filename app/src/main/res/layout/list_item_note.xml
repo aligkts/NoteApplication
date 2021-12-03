@@ -38,25 +38,34 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_title"
+                style="@style/NoteAppTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="@dimen/spacing_medium"
+                android:padding="@dimen/spacing_medium"
                 android:text="@{model.title}"
                 android:textSize="@dimen/text_small"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/img_edited"
                 app:layout_constraintStart_toEndOf="@id/img_cover"
                 app:layout_constraintTop_toTopOf="@id/img_cover"
                 tools:text="Title" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_edited"
+                visibleIf="@{model.edited}"
+                android:layout_width="@dimen/size_edit_icon"
+                android:layout_height="@dimen/size_edit_icon"
+                android:layout_margin="@dimen/spacing_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_edit" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_date"
+                style="@style/NoteAppTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:paddingHorizontal="@dimen/spacing_medium"
                 android:paddingBottom="@dimen/spacing_medium"
                 android:text="@{model.createdDate}"
@@ -68,6 +77,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_detail"
+                style="@style/NoteAppTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

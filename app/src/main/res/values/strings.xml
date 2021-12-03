@@ -7,6 +7,7 @@
     <string name="no_internet">No internet connection</string>
     <string name="general_network_error">Cannot connect to server</string>
     <string name="unknown_error">Unknown error happened</string>
+    <string name="fill_inputs_error">Please fill inputs</string>
     <string name="loading">Loading …</string>
     <string name="field_title">Title</string>
     <string name="field_detail">Detail</string>

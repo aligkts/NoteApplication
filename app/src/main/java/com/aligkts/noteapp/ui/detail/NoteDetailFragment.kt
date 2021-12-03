@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.aligkts.noteapp.R
 import com.aligkts.noteapp.databinding.FragmentNoteDetailBinding
 import com.aligkts.noteapp.ui.common.base.BaseFragment
 import com.aligkts.noteapp.utils.hideKeyboard
+import com.aligkts.noteapp.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -35,15 +37,19 @@ class NoteDetailFragment : BaseFragment<FragmentNoteDetailBinding>() {
 
     private fun readArgs() {
         args.note?.let {
-            noteDetailViewModel.note = it
+            noteDetailViewModel.setCurrentNote(it)
         }
     }
 
     private fun initUI() = with(binding) {
         viewModel = noteDetailViewModel
         btnAddOrEdit.setOnClickListener {
-            noteDetailViewModel.insertOrUpdateNote()
-            findNavController().popBackStack()
+            if (noteDetailViewModel.allInputsCompleted()) {
+                noteDetailViewModel.insertOrUpdateNote()
+                findNavController().popBackStack()
+            } else {
+                showToast(getString(R.string.fill_inputs_error))
+            }
         }
     }
 
