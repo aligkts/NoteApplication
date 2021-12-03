@@ -11,6 +11,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/container_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/spacing_line"
@@ -58,7 +59,7 @@
                 android:gravity="center_vertical"
                 android:paddingHorizontal="@dimen/spacing_medium"
                 android:paddingBottom="@dimen/spacing_medium"
-                android:text="@{model.editDate}"
+                android:text="@{model.createdDate}"
                 android:textSize="@dimen/text_xsmall"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_cover"
@@ -66,12 +67,12 @@
                 tools:text="2019" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_overview"
+                android:id="@+id/txt_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/spacing_medium"
                 android:paddingBottom="@dimen/spacing_medium"
-                android:text="@{model.overview}"
+                android:text="@{model.detail}"
                 android:textSize="@dimen/text_xsmall"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
