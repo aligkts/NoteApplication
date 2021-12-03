@@ -5,14 +5,13 @@ import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.aligkts.noteapp.R
 import com.aligkts.noteapp.databinding.FragmentHomeBinding
 import com.aligkts.noteapp.domain.model.Note
 import com.aligkts.noteapp.ui.common.base.BaseFragment
-import com.aligkts.noteapp.utils.gone
-import com.aligkts.noteapp.utils.navigateSafe
-import com.aligkts.noteapp.utils.show
-import com.aligkts.noteapp.utils.showToast
+import com.aligkts.noteapp.ui.common.base.ItemSwipeHandler
+import com.aligkts.noteapp.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -40,7 +39,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun setupBindings() = with(binding) {
         viewModel = homeViewModel
-        rvNotes.adapter = noteAdapter
+        rvNotes.apply {
+            adapter = noteAdapter
+            addItemDecoration(DefaultItemDecorator(
+                resources.getDimensionPixelSize(R.dimen.spacing_small),
+                resources.getDimensionPixelSize(R.dimen.spacing_small))
+            )
+        }
+        ItemTouchHelper(
+            ItemSwipeHandler(requireContext(), noteAdapter) {
+                homeViewModel.deleteNote(it.id)
+            }
+        ).apply { attachToRecyclerView(rvNotes) }
     }
 
     private fun observeNotes() = viewLifecycleOwner.lifecycleScope.launch {

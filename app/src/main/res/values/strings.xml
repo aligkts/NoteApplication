@@ -10,7 +10,7 @@
     <string name="loading">Loading …</string>
     <string name="field_title">Title</string>
     <string name="field_detail">Detail</string>
-    <string name="field_image_url">Image Link</string>
+    <string name="field_image_url">Image Link(Optional)</string>
     <string name="field_created_date">Created Date</string>
     <string name="warning_empty_note">You don\'t have any note.</string>
 </resources>

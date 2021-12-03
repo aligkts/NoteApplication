@@ -22,7 +22,7 @@ data class Note(
         Random.nextLong(),
         title = "",
         detail = "",
-        createdDate = Date().formatToViewDateDefaults(),
+        createdDate = null,
         editedDate = null,
         imageUrl = null
     )

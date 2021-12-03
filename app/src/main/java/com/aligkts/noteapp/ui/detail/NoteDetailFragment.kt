@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aligkts.noteapp.databinding.FragmentNoteDetailBinding
 import com.aligkts.noteapp.ui.common.base.BaseFragment
+import com.aligkts.noteapp.utils.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -44,5 +45,10 @@ class NoteDetailFragment : BaseFragment<FragmentNoteDetailBinding>() {
             noteDetailViewModel.insertOrUpdateNote()
             findNavController().popBackStack()
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requireContext().hideKeyboard(requireView())
     }
 }

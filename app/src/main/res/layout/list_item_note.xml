@@ -13,10 +13,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/container_note"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_note_item"
         android:layout_marginVertical="@dimen/spacing_line"
         android:animateLayoutChanges="true"
-        app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/spacing_medium">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,10 +24,11 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_cover"
-                android:layout_width="92dp"
+                android:layout_width="@dimen/note_image_width"
                 android:layout_height="0dp"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_place_holder_24dp"
+                app:imageUrl="@{model.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="0.6666666"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +70,8 @@
                 android:id="@+id/txt_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:paddingHorizontal="@dimen/spacing_medium"
                 android:paddingBottom="@dimen/spacing_medium"
                 android:text="@{model.detail}"
