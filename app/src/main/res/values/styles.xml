@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="RippleItemBackgroundStyle">
-        <item name="android:background">@drawable/ripple</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
-
     <style name="NoteAppTextInputEditDefaultStyle" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:fontFamily">@font/ubuntu_bold</item>
         <item name="android:textColor">@android:color/darker_gray</item>

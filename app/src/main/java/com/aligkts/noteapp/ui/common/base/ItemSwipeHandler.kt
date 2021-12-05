@@ -74,7 +74,7 @@ class ItemSwipeHandler<T : ListAdapterItem, VB : ViewDataBinding>(
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        val position = viewHolder.absoluteAdapterPosition
+        val position = viewHolder.adapterPosition
         val item = adapter.removeItem(position) ?: return
         onItemRemoved?.invoke(item)
     }

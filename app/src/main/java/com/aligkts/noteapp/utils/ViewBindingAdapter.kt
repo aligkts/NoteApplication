@@ -18,12 +18,6 @@ object ViewBindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("hiddenIf")
-    fun hiddenIf(view: View, shouldHidden: Boolean) {
-        view.isGone = shouldHidden
-    }
-
-    @JvmStatic
     @BindingAdapter("app:imageUrl")
     fun setImageUrl(imageView: ImageView, imageUrl: String?) {
         imageUrl?.let {

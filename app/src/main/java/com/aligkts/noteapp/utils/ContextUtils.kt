@@ -34,29 +34,6 @@ fun Context.loadColor(@ColorRes res: Int?): Int {
     } ?: Color.BLACK
 }
 
-fun Fragment.getColorCompat(@ColorRes colorId: Int) =
-    ContextCompat.getColor(requireContext(), colorId)
-
-fun Context.isNetworkAvailable(): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        val nw = cm.activeNetwork ?: return false
-        val actNw = cm.getNetworkCapabilities(nw) ?: return false
-        return when {
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
-            else -> false
-        }
-    } else {
-        @Suppress("DEPRECATION")
-        val nwInfo = cm.activeNetworkInfo ?: return false
-        @Suppress("DEPRECATION")
-        return nwInfo.isConnected
-    }
-}
-
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager =
         getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
