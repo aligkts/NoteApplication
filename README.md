@@ -10,13 +10,10 @@ A note android app, provides user to add, edit, delete notes.
 
 - Kotlin Coroutines, Flow, StateFlow
 - Hilt
-- Paging3
 - Navigation Component
 - LiveData
 - ViewModel
 - Room
-- Retrofit
-- OkHttp3
 - Glide
 - jUnit
 - Mockk
