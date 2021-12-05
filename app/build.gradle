@@ -11,12 +11,12 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.aligkts.noteapp"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -49,10 +49,6 @@ android {
         exclude "META-INF/AL2.0"
         exclude "META-INF/LGPL2.1"
     }
-}
-
-kotlin.sourceSets.all {
-    languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
 }
 
 
