@@ -2,7 +2,9 @@
 A note android app, provides user to add, edit, delete notes.
 
 # Demo
-Will be added
+<span><img src="https://github.com/aligkts/NoteApplication/tree/develop/app/src/main/demo/add-note.gif" width="170" height="320"></span>
+<span><img src="https://github.com/aligkts/NoteApplication/tree/develop/app/src/main/demo/delete-note.gif" width="170" height="320"></span>
+<span><img src="https://github.com/aligkts/NoteApplication/tree/develop/app/src/main/demo/edit-note.gif" width="170" height="320"></span>
 
 # Technologies
 
