@@ -12,7 +12,6 @@
     <dimen name="text_xsmall">12sp</dimen>
     <dimen name="spacing_line">2dp</dimen>
 
-    <dimen name="list_progress_bar">32dp</dimen>
     <dimen name="height_note_item">120dp</dimen>
     <dimen name="note_image_width">90dp</dimen>
     <dimen name="size_edit_icon">25dp</dimen>

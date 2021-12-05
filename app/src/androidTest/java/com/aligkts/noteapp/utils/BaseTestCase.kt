@@ -30,12 +30,6 @@ open class BaseTestCase {
         Dispatchers.setMain(testDispatcher)
     }
 
-    fun throwScopeExceptions() {
-        testScope.uncaughtExceptions.firstOrNull()?.let {
-            throw it
-        }
-    }
-
     open fun tearDown() {
         testScope.uncaughtExceptions.firstOrNull()?.let { throw it }
         Dispatchers.resetMain()

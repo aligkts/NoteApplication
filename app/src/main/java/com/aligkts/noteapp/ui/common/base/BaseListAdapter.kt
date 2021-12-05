@@ -60,7 +60,7 @@ abstract class BaseListAdapter<VB : ViewDataBinding, T : ListAdapterItem>(
         val item = currentList[position]
         if (position > itemCount) return null
         removedItems.add(item)
-        val list = currentList - removedItems
+        val list = currentList - removedItems.toSet()
         if (list.isEmpty()) removedItems.clear()
         submit(list, true)
         return item
