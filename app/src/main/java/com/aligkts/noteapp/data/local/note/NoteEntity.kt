@@ -13,16 +13,18 @@ data class NoteEntity(
     @PrimaryKey
     @field:SerializedName("id") val id: Long,
     @field:SerializedName("title") val title: String,
-    @field:SerializedName("overview") val overview: String,
-    @field:SerializedName("edit_date") val editDate: String?,
-    @field:SerializedName("image_url") val imageUrl: String?
+    @field:SerializedName("detail") val detail: String,
+    @field:SerializedName("created_date") val createdDate: String?,
+    @field:SerializedName("image_url") val imageUrl: String?,
+    @field:SerializedName("edited") val edited: Boolean,
 ) {
 
     fun toNote() = Note(
         id = id,
         title = title,
-        overview = overview,
-        editDate = editDate,
+        detail = detail,
+        createdDate = createdDate,
         imageUrl = imageUrl,
+        edited = edited
     )
 }

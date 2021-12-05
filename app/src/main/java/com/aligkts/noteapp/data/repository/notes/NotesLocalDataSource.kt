@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.Flow
  * Created by Ali Göktaş on 01,December,2021
  */
 interface NotesLocalDataSource {
-    fun getNoteFlow(id: Long): Flow<NoteEntity?>
-    suspend fun insert(notes: NoteEntity)
+    suspend fun insert(note: NoteEntity)
+    suspend fun delete(noteId: Long)
+    suspend fun update(note: NoteEntity)
+    fun getNote(noteId: Long): Flow<NoteEntity?>
+    fun getAllNotes(): Flow<List<NoteEntity?>>
 }

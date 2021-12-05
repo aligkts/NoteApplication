@@ -11,20 +11,20 @@ import org.junit.Ignore
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Ignore("This is base class")
-open class IITestCase {
+open class BaseTestCaseJ4 {
 
-    protected val td = TestCoroutineDispatcher()
-    protected val testScope = TestCoroutineScope(td)
+    protected val testDispatcher = TestCoroutineDispatcher()
+    protected val testScope = TestCoroutineScope(testDispatcher)
 
     open fun setUp() {
-        Dispatchers.setMain(td)
+        Dispatchers.setMain(testDispatcher)
     }
 
     open fun tearDown() {
         testScope.uncaughtExceptions.firstOrNull()?.let { throw it }
         unmockkAll()
         Dispatchers.resetMain()
-        td.cleanupTestCoroutines()
+        testDispatcher.cleanupTestCoroutines()
         testScope.cleanupTestCoroutines()
     }
 }

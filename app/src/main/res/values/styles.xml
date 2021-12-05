@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="RippleItemBackgroundStyle">
-        <item name="android:background">@drawable/ripple</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
+    <style name="NoteAppTextInputEditDefaultStyle" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="NoteAppTextInputEditOverlayStyle">
+        <item name="editTextStyle">@style/NoteAppTextInputEditDefaultStyle</item>
+    </style>
+
+    <style name="NoteAppTextInputLayoutDefaultStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="materialThemeOverlay">@style/NoteAppTextInputEditOverlayStyle</item>
+    </style>
+
+    <style name="NoteAppTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+    </style>
+
+    <style name="NoteAppButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/ubuntu_bold</item>
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+        <item name="android:background">@drawable/bg_default_button</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textSize">@dimen/text_medium</item>
     </style>
 </resources>

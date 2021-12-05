@@ -13,10 +13,10 @@ import org.junit.Rule
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Ignore("This is base class")
-open class IITestCase {
+open class BaseTestCase {
 
-    protected val td = TestCoroutineDispatcher()
-    protected val testScope = TestCoroutineScope(td)
+    protected val testDispatcher = TestCoroutineDispatcher()
+    protected val testScope = TestCoroutineScope(testDispatcher)
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -27,13 +27,7 @@ open class IITestCase {
 
     open fun setUp() {
         hiltRule.inject()
-        Dispatchers.setMain(td)
-    }
-
-    fun throwScopeExceptions() {
-        testScope.uncaughtExceptions.firstOrNull()?.let {
-            throw it
-        }
+        Dispatchers.setMain(testDispatcher)
     }
 
     open fun tearDown() {

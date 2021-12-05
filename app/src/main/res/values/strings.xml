@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">NoteApp</string>
-    <string name="title_home">Home</string>
-    <string name="no_internet">No internet connection</string>
-    <string name="general_network_error">Cannot connect to server</string>
-    <string name="unknown_error">Unknown error happened</string>
+    <string name="title_home">Notes</string>
+    <string name="title_detail">Note Detail</string>
+    <string name="add_note">Add Note</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="fill_inputs_error">Please fill inputs</string>
     <string name="loading">Loading …</string>
+    <string name="field_title">Title</string>
+    <string name="field_detail">Detail</string>
+    <string name="field_image_url">Image Link(Optional)</string>
+    <string name="field_created_date">Created Date</string>
+    <string name="warning_empty_note">You don\'t have any note.</string>
 </resources>

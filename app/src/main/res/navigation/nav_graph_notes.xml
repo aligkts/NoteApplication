@@ -9,6 +9,34 @@
         android:id="@+id/navigation_home"
         android:name="com.aligkts.noteapp.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_note_detail"
+            app:destination="@id/navigation_note_detail"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_note_detail"
+        android:name="com.aligkts.noteapp.ui.detail.NoteDetailFragment"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_note_detail">
+
+        <argument
+            android:name="note"
+            android:defaultValue="@null"
+            app:argType="com.aligkts.noteapp.domain.model.Note"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:nullable="true"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
 
 </navigation>
