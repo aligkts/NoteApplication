@@ -37,7 +37,7 @@ jobs:
 
   package:
     needs: [unit-test]
-    name: Generate APK
+    name: generate apk
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
