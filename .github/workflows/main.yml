@@ -61,7 +61,7 @@ jobs:
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: aligkts/Note-App
-          token: ${60a9b37fd146cb22a015f86c7912b0a216fafc32}
+          token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers
           file: app/build/outputs/apk/release/app-release.apk
           notifyTesters: true
