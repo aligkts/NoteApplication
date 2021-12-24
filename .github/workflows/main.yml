@@ -50,11 +50,17 @@ jobs:
 
       - name: Build release APK
         run: ./gradlew assembleRelease --stacktrace
-
+        
+      - name: Upload APK to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          name: App
+          path: app/build/outputs/apk/release/app-release.apk
+          
       - name: Upload APK to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
-          appName: wzieba/Note-App
+          appName: aligkts/Note-App
           token: ${60a9b37fd146cb22a015f86c7912b0a216fafc32}
           group: Testers
           file: app/build/outputs/apk/release/app-release.apk
