@@ -30,9 +30,4 @@ class ViewLifecycleDelegateMutable<T> : ReadWriteProperty<Fragment, T>, Lifecycl
         this.value = value
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    private fun onViewDestroyed() {
-        isObserverAdded = false
-        value = null
-    }
 }

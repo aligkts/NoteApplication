@@ -3,7 +3,6 @@ package com.aligkts.noteapp.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aligkts.noteapp.data.repository.notes.NoteRepository
-import com.aligkts.noteapp.domain.model.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
