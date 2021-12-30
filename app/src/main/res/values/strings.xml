@@ -5,7 +5,6 @@
     <string name="add_note">Add Note</string>
     <string name="edit_note">Edit Note</string>
     <string name="fill_inputs_error">Please fill inputs</string>
-    <string name="loading">Loading …</string>
     <string name="field_title">Title</string>
     <string name="field_detail">Detail</string>
     <string name="field_image_url">Image Link(Optional)</string>
