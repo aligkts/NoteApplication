@@ -16,9 +16,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Created by Ali Göktaş on 05,December,2021
- */
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MovieResponseRepositoryTest : BaseTestCaseJ4() {

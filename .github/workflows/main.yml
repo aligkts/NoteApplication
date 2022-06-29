@@ -48,6 +48,15 @@ jobs:
         with:
           java-version: 11
 
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
+
       - name: Build release APK
         run: ./gradlew assembleRelease --stacktrace
         
