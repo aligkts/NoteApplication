@@ -41,9 +41,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewModel = homeViewModel
         rvNotes.apply {
             adapter = noteAdapter
-            addItemDecoration(DefaultItemDecorator(
-                resources.getDimensionPixelSize(R.dimen.spacing_small),
-                resources.getDimensionPixelSize(R.dimen.spacing_small))
+            addItemDecoration(
+                DefaultItemDecorator(
+                    resources.getDimensionPixelSize(R.dimen.spacing_small),
+                    resources.getDimensionPixelSize(R.dimen.spacing_small)
+                )
             )
         }
         ItemTouchHelper(
