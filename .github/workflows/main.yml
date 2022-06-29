@@ -65,7 +65,7 @@ jobs:
           print-file: true
 
       - name: Update gradle version for Android
-        uses:damienaicheh/update-android-version-gradle-action@v1.0.0
+        uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
           build-gradle-path: app/build.gradle
           version-code: ${{ env.NUMVER_OF_COMMITS }}
