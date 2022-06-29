@@ -20,7 +20,7 @@ jobs:
           path: app/build/reports/lint-results-debug.html
 
   unit-test:
-    needs: [lint]
+    needs: [ lint ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -36,7 +36,7 @@ jobs:
           path: app/build/reports/tests/testDebugUnitTest/
 
   package:
-    needs: [unit-test]
+    needs: [ unit-test ]
     name: generate apk
     runs-on: ubuntu-latest
     steps:
@@ -48,24 +48,15 @@ jobs:
         with:
           java-version: 11
 
-      - name: Run tests
-        run: ./gradlew test
-
-      - name: Upload test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
-
       - name: Build release APK
         run: ./gradlew assembleRelease --stacktrace
-        
+
       - name: Upload APK to GitHub
         uses: actions/upload-artifact@v2
         with:
           name: note-app.apk
           path: app/build/outputs/apk/release/app-release.apk
-          
+
       - name: Upload APK to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
