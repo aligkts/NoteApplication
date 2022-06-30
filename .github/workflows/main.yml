@@ -57,12 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update gradle version for Android
-        uses: damienaicheh/update-android-version-gradle-action@v1.0.0
-        with:
-          build-gradle-path: 'android/app/build.gradle'
-          version-code: ${{ env.NUMVER_OF_COMMITS }}
-          version-name: '${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
-          print-file: true
+        run: |
+          ./gradlew bumpPatchVersion
+          ./gradlew bumpMinorVersion
+
       - name: Commit the changes
         run: |
           git config --global user.name 'Ali Göktaş'
