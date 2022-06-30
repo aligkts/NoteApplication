@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Make gradlew executable
-        run: chmod +x ./gradlew
+        run: chmod 777 ./gradlew
 
       - name: Update patch version
         run: ./gradlew bumpPatchVersion
