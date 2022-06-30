@@ -64,9 +64,11 @@ jobs:
           version-name: '${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
           print-file: true
       - name: Commit the changes
-        run: git add android/app/build.gradle && git commit -m "Update version to ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}"
-      - name: Pushing version changes
-        run: git push origin master
+        run: |
+          git config --global user.name 'Ali Göktaş'
+          git config --global user.email 'eng.ali.goktas@gmail.com'
+          git commit -am "Updated version"
+          git push
         with:
           branch: master
           message: 'Update version to ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
