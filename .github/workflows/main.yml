@@ -69,9 +69,6 @@ jobs:
           git config --global user.email 'eng.ali.goktas@gmail.com'
           git commit -am "Updated version"
           git push
-        with:
-          branch: master
-          message: 'Update version to ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
 
   package:
     needs: [ version-increment ]
