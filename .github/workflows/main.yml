@@ -59,10 +59,17 @@ jobs:
       - name: Update gradle version for Android
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
-          build-gradle-path: 'src/build.gradle'
+          build-gradle-path: 'android/app/build.gradle'
           version-code: ${{ env.NUMVER_OF_COMMITS }}
           version-name: '${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
           print-file: true
+      - name: Commiting version change
+        uses: zwaldowski/git-commit-action@v1
+      - name: Pushing version change
+        uses: zwaldowski/git-push-action@v1
+        with:
+          branch: master
+          message: 'Update version to ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
 
   package:
     needs: [ version-increment ]
