@@ -56,10 +56,11 @@ jobs:
     #    needs: [ static-code-analysis ]
     runs-on: ubuntu-latest
     steps:
-      - name: Update gradle version for Android
-        run: |
-          ./gradlew bumpPatchVersion
-          ./gradlew bumpMinorVersion
+      - name: Update patch version
+        run: ./gradlew bumpPatchVersion
+
+      - name: Update minor version
+        run: ./gradlew bumpMinorVersion
 
       - name: Commit the changes
         run: |
