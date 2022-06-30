@@ -69,6 +69,7 @@ jobs:
           git commit -am "Updated version"
           git push
 
+
   package:
     needs: [ version-increment ]
     name: generate apk
